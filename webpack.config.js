@@ -14,13 +14,36 @@ module.exports = {
         path:BUILD_PATH,
         filename:'bundle.js'
     },
+    module:{
+      loaders:[
+          {
+              test:/\.css$/,
+              loaders:['style','css'],//loaders处理顺序从右到左
+              include:APP_PATH
+          },
+          {
+              test:/\.(png|jpg)$/,
+              loader:'url?limit=40000'
+          },
+          {
+              test:/\.jsx?$/,
+              loader:'babel',
+              include:APP_PATH,
+              query:{
+                  presets : ['es2015']
+              }
+          }
+      ]
+    },
     plugins:[
         new HtmlwebpackPlugin({
-            title :'Hello World app'
+            title :'Hello World web'
         })
     ],
     devServer:{
-      historyApiFallback:true,
-
+        historyApiFallback:true,//不跳转
+        hot:true,
+        inline:true,//实时刷新
+        progress:true,
     },
 };
