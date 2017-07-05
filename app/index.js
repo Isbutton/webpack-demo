@@ -10,8 +10,8 @@ let app = document.createElement("div");
 app.innerHTML = "<h1>hahahahaha</h1>";
 app.appendChild(generateText());
 document.body.appendChild(app);
-const mPromise = Promise.resolve(42);
+const mPromise = Promise.resolve(35);
 mPromise.then((number)=>{
     $('body').append('<p>promise is '+number+'</p>');
-})
-$('body').append('<p>look! now is '+moment().format()+'</p>')
+});
+$('body').append('<p>look! now is '+moment().format()+'</p>');
